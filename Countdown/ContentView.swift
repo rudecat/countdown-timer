@@ -24,7 +24,7 @@ struct ContentView: View {
                     .stroke(Color.gray.opacity(0.2), style: StrokeStyle(lineWidth: lineWith, lineCap: .round))
                 Circle()
                     .trim(from: 0, to: 1 - ((defaultTimeRemaining - timeRemaining) / defaultTimeRemaining))
-                    .stroke(timeRemaining > 40 ? Color.green : timeRemaining > 20 ? Color.yellow : Color.red, style: StrokeStyle(lineWidth: lineWith, lineCap: .round))
+                    .stroke(timeRemaining > defaultTimeRemaining / 3 * 2 ? Color.green : timeRemaining > defaultTimeRemaining / 3 ? Color.yellow : Color.red, style: StrokeStyle(lineWidth: lineWith, lineCap: .round))
                     .rotationEffect(.degrees(-90))
                     .animation(.easeInOut)
                 VStack(spacing: -15){
@@ -32,7 +32,7 @@ struct ContentView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 70, height: 70)
-                    Text("\(Int(timeRemaining))").font(.system(size: 150)).foregroundColor(timeRemaining > 40 ? Color.green : timeRemaining > 20 ? Color.yellow : Color.red)
+                    Text("\(Int(timeRemaining))").font(.system(size: 150)).foregroundColor(timeRemaining > defaultTimeRemaining / 3 * 2 ? Color.green : timeRemaining > defaultTimeRemaining / 3 ? Color.yellow : Color.red)
                 }
                 
             }.frame(width: radius * 3, height: radius * 3)
